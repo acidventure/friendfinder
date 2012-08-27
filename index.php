@@ -12,7 +12,6 @@
     
     <link rel="stylesheet" href="resources/css/token-input.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/token-input-facebook.css" type="text/css" />
-    <link rel="stylesheet" href="resources/css/main.css" type="text/css" />
     
 	<script type="text/javascript" src="resources/js/jquery-1.8.0.min" charset="utf-8"></script>  
 	<script type="text/javascript" src="resources/js/jquery-ui-1.8.17.custom.min" charset="utf-8"></script>  
@@ -22,22 +21,21 @@
 
 </head>
 <body>
-	<div id="fb-root"> </div>
+	<div id="fb-root"></div>
     
-	<header class="style">
-		<h1 class="font-sytle">Friend Finder</h1>
+	<header>
+		<h1>Friend Finder</h1>
 	</header>
     
-	<section class="style">
+	<section style="width: 700px;">
     	<article id="not-available" style="display:block;"> 
-                <a id='fb-login' href="#" class="Main_Button"><img src="resources/images/fb-button.png" width="354" height="69"></a>
-               
-<hr>
-                <video class="style" id="first_video" width="500" height="400" controls>
+                <a id='fb-login' href="#" class="">Ingresar</a>
+                <hr>
+                <video id="first_video" width="500" height="400" controls>
                     <source src="video.mp4" type="video/mp4" codec='avc1, mp4a' />
                     <source src="video.webm" type="video/webm" codec='vp8,vorbis' />
                 </video>        
-      </article>
+        </article>
 		<article id="available" style="display:none;">
 		    
             Palabra clave:
@@ -55,7 +53,7 @@
     -->
     
     
-<script>
+    <script>
 	    $(function(){
 
             // Inicializa las Etiquetas que se buscaran
