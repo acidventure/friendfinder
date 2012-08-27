@@ -5,31 +5,34 @@
 	min-width: 768;
 	max-width: 1024;
 	max-width: 768;
-	overflow:scroll;
+	overflow:none;
 	display:block;
 }
 
 .container {
 	width:180;
 	height:180;
+	text-align:right;
 	background-color:#eeeeee;
 	display:inline;
 }
 
 .optionsArea {
+	background-color:'#385998';
 	width:180;
 	height:30;
+	display:block;
 }
 
 .optionsItem {
-	float:right;
 	height:30;
+	display:block;
 }
 
 .interestArea {
 	width:180;
 	height:30;
-	display:inline;
+	display:block;
 	position:relative;
 }
 

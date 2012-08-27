@@ -114,8 +114,11 @@ var inputData = { "friend_array" : [ friend1, friend2, friend3, friend4, friend5
 
 function loadFriends(data)
 {
-	$(".container").first().hide("fast", function showNext() {
-		$(this).next(".container").hide("fast", showNext);
+	$(".container").removeClass("container").addClass("oldContainer");
+	$(".oldContainer").first().hide("fast", function showNext() {
+		var next = $(this).next(".oldContainer");
+		$(this).detach();
+		next.hide("fast", showNext);
 	});
 	var friends = data["friend_array"];
 	if(friends.length > 0)
@@ -127,9 +130,9 @@ function loadFriends(data)
 			var box = createBox({friend:friends[i],hidden:false});
 			$("#divFriends").append(box);
 		}
-		$(".container").first().show("fast", function showNext() {
-			$(this).next(".container").show("fast", showNext);
-		});
+		$(".container").first().show("fast", function showPrev() {
+			$(this).next(".container").show("fast", showPrev);
+		  });
 	}
 }
 
@@ -193,6 +196,9 @@ function evaluateFriends(friends)
 	{
 		var arrInterest = {};
 		var friend = friends[i];
+		friend["person_count"] = 0;
+		friend["interest_count"] = 0;
+		friend["interest_array"] = [];
 		friend["person_count"] = friend["person_array"].length;
 		for(var j in friend["person_array"])
 		{
