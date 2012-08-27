@@ -35,28 +35,40 @@
 	        <input type="submit" value="Submit">
 	    	</form>
 		</article>
-		<article>chat-</article>
 	</section>
     
 	<footer>
-		Empresa 2012
+		Footer
 	</footer>
+    
+    
     <script>
 	    $(function(){
 
-            //-------------------------------
-            // Tags
-            //-------------------------------
+            // tags
 			var keyTags = $('#tags');
             keyTags.tagit({
 			    itemName: 'item',
 			    fieldName: 'tags',
 				allowSpaces: true,
 				onTagAdded: function(event, tag) {
-					console.log('se agrego: '+ keyTags.tagit('tagLabel', tag));
-					//$("#mytags").tagit("assignedTags");
+					getPages(keyTags.tagit('tagLabel', tag));
+					//$("#mytags").tagit("assignedTags");//metodo para extraer todas las tags
 				}
 		    });
+			
+			//Obtiene los IDs de las paginas
+			function getPages(tag){
+				console.log('se agrego: '+ tag);
+				FB.api('/search', {q: tag, type: 'page'}, function(response) {
+					//Response nos trae un arreglo con los resultados de la busqueda
+					console.log(response);
+					$.each(response.data, function(i, element){
+						console.log('nombre:' + element.name + ' - ID: '+element.id);
+					});
+				});
+			}
+			// /tags
             
 	    });
 	</script>
@@ -79,7 +91,7 @@
 		   
 		    FB.getLoginStatus(function(response) {	
 				
-				//fb-login aparece solo si no esta logueado
+				//Funcion para el boton de Logueo en caso de que no este registrado
 				$('#fb-login').click(function (response) {
 					FB.login(function(response) {
 						if (response.authResponse) {
@@ -88,7 +100,7 @@
 							initLogged();
 							$('#not-available').css('display', 'none');
 						} else {
-							//user cancelled login or did not grant authorization
+							//si el usuario cancelo o no garantizo su coneccion
 							$('#not-available').css('display', 'block');
 						}
 					}, {scope:'<?php echo $fbconfig['scope']; ?>'});  	
@@ -102,7 +114,7 @@
 					initLogged();
 				 	$('#not-available').css('display', 'none');
 					
-				// the user isn't even logged in to Facebook.
+				// Si el usuario no esta logueado en Facebook.
 			  	} else if (response.status === 'not_authorized') {
 				 	$('#not-available').css('display', 'block');
 			  	} else {
@@ -122,6 +134,7 @@
 				});
 			}
 			
+			//Funcion para obtener a todos los amigos
 		    function getFriends(){
 				FB.api('/me/friends', { fields: 'name,id' }, function(result) {
 					if (!result || result.error) {
