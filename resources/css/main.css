@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* CSS Document */
+.font-sytle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 24px;
+	text-align:center;
+}
+
+.style {
+	width: 700px;
+	}
+.Main_Button{
+	padding-left:25%;
+	}	
