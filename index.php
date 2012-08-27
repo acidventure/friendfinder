@@ -10,42 +10,53 @@
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="resources/css/jquery.tagit.css">
     
+    <link rel="stylesheet" href="resources/css/token-input.css" type="text/css" />
+    <link rel="stylesheet" href="resources/css/token-input-facebook.css" type="text/css" />
+    
 	<script type="text/javascript" src="resources/js/jquery-1.8.0.min" charset="utf-8"></script>  
 	<script type="text/javascript" src="resources/js/jquery-ui-1.8.17.custom.min" charset="utf-8"></script>  
+    
     <script type="text/javascript" src="resources/js/tag-it.js" charset="utf-8"></script>
+    <script type="text/javascript" src="resources/js/jquery.tokeninput.js" charset="utf-8"></script>
 
 </head>
 <body>
 	<div id="fb-root"></div>
+    
 	<header>
 		<h1>Friend Finder</h1>
 	</header>
     
-	<section>
+	<section style="width: 700px;">
     	<article id="not-available" style="display:block;"> 
                 <a id='fb-login' href="#" class="">Ingresar</a>
+                <hr>
                 <video id="first_video" width="500" height="400" controls>
                     <source src="video.mp4" type="video/mp4" codec='avc1, mp4a' />
                     <source src="video.webm" type="video/webm" codec='vp8,vorbis' />
                 </video>        
         </article>
-		<article id="available" style="display:block">
-			<form>
-		    <ul id="tags"></ul>
-	        <input type="submit" value="Submit">
-	    	</form>
+		<article id="available" style="display:none;">
+		    
+            Palabra clave:
+            <ul id="tags"></ul>
+            Personas clave:
+            <input type="text" id="key-friends" name="Key Friend List" />
+            
 		</article>
 	</section>
-    
-	<footer>
+                
+
+	<!--<footer>
 		Footer
 	</footer>
+    -->
     
     
     <script>
 	    $(function(){
 
-            // tags
+            // Inicializa las Etiquetas que se buscaran
 			var keyTags = $('#tags');
             keyTags.tagit({
 			    itemName: 'item',
@@ -62,13 +73,19 @@
 				console.log('se agrego: '+ tag);
 				FB.api('/search', {q: tag, type: 'page'}, function(response) {
 					//Response nos trae un arreglo con los resultados de la busqueda
+					
 					console.log(response);
+					
 					$.each(response.data, function(i, element){
 						console.log('nombre:' + element.name + ' - ID: '+element.id);
+						likesFriend(element)
+						
 					});
 				});
 			}
 			// /tags
+			
+			
             
 	    });
 	</script>
@@ -98,10 +115,10 @@
 							uid = response.authResponse.userID;
 							accessToken = response.authResponse.accessToken;
 							initLogged();
-							$('#not-available').css('display', 'none');
+							switchStyles(true);
 						} else {
 							//si el usuario cancelo o no garantizo su coneccion
-							$('#not-available').css('display', 'block');
+							switchStyles(false);
 						}
 					}, {scope:'<?php echo $fbconfig['scope']; ?>'});  	
 				}); 
@@ -112,17 +129,17 @@
 					uid = response.authResponse.userID;
 					accessToken = response.authResponse.accessToken;
 					initLogged();
-				 	$('#not-available').css('display', 'none');
-					
+					switchStyles(true);
 				// Si el usuario no esta logueado en Facebook.
 			  	} else if (response.status === 'not_authorized') {
-				 	$('#not-available').css('display', 'block');
+				 	switchStyles(false);
 			  	} else {
-					$('#not-available').css('display', 'block');
+					switchStyles(false);
+					
 			  	}		  
 			});
 			
-			//Star Actions if the user are logged 
+			//Iniciar acciones si el usuario esta logueado
 			function initLogged(){
 				getFriends();
 				FB.api('/me', function(response) {
@@ -139,17 +156,69 @@
 				FB.api('/me/friends', { fields: 'name,id' }, function(result) {
 					if (!result || result.error) {
 						// alert('Error occured');
-						 getFriends();
+						getFriends();
 					} else {
-						 allFriends=result.data;
-						 var j = 0;
-						 $.each(allFriends, function(i, element){
+						allFriends=result.data;
+						var j = 0;
+						$.each(allFriends, function(i, element){
 							j++;
 						});
 						console.log("Numero de amigos: "+j);
+						initFriendInput();
 					}
 				});
 			}		
+		}//end fb qsync function
+		
+		function switchStyles(is_valid){
+			if(is_valid){
+				$('#not-available').css('display', 'none');
+				$('#available').css('display', 'block');
+			}else{
+				$('#not-available').css('display', 'block');
+				$('#available').css('display', 'none');
+			}
+			console.log('swicheo');	
+		}
+		
+		function initFriendInput(){
+			$("#key-friends").tokenInput(allFriends, {
+				theme: "facebook",
+				tokenValue: 'id',
+				preventDuplicates: true,
+				propertyToSearch: "name",
+				hintText: "Selecciona el contacto",
+				noResultsText: "Sin resultados",
+				searchingText: "Buscando...",
+				onAdd: function (item) {
+					//console.log(item.id);
+					$('.error').css('display','none');
+				},
+				resultsFormatter: function(item){ 
+				oneName = (item.location && item.location != null) ? ""+item.location.name : "-" ;
+				return "<li>" + "<img src='https://graph.facebook.com/" + item.id + "/picture' title='" + item.name + "' class='uiProfilePhotoMedium' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='full_name'>" + item.name + "</div><div class='location'>" + oneName + "</div></div></li>" },
+			});	
+		}
+		
+		function likesFriend(element){
+			FB.api({
+					method: 'fql.query',
+					query: 'SELECT uid FROM page_fan WHERE page_id = '+element.id+' AND uid IN (SELECT uid2 FROM friend WHERE uid1=me())'
+				},function(result) {	
+					//allFriends=data;
+					console.log('Page Name: '+element.name);
+					//console.log(result);
+					$.each(result, function(i, element_f){
+						console.log('usr_id::::'+element_f.uid);
+						$.each(allFriends, function(i, friend_element){
+							
+							if(friend_element.id == element_f.uid){
+								$("#key-friends").tokenInput("add", {"id":friend_element.id, "name": friend_element.name});
+								return false;
+							}
+						});
+					});
+				});		
 		}
 		
 		function friendRequest(){
