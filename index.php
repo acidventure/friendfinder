@@ -63,6 +63,7 @@
 			    fieldName: 'tags',
 				allowSpaces: true,
 				onTagAdded: function(event, tag) {
+					pages=[];
 					getPages(keyTags.tagit('tagLabel', tag));
 					//$("#mytags").tagit("assignedTags");//metodo para extraer todas las tags
 				}
@@ -70,33 +71,35 @@
 			
 			//Obtiene los IDs de las paginas
 			function getPages(tag){
+				var pages_tmp;
 				console.log('se agrego: '+ tag);
 				FB.api('/search', {q: tag, type: 'page'}, function(response) {
 					//Response nos trae un arreglo con los resultados de la busqueda
-					
-					console.log(response);
-					
+					//console.log();					
 					$.each(response.data, function(i, element){
-						console.log('nombre:' + element.name + ' - ID: '+element.id);
-						likesFriend(element)
+						//console.log('nombre:' + element.name + ' - ID: '+element.id);
+						pageFriend(element);
 						
 					});
+					//pages_tmp = pages;
+					interests.push({"text":tag, "color": '#003366', "pages_array": pages})
 				});
+				
 			}
 			// /tags
-			
-			
-            
+			            
 	    });
-	</script>
     
     <!-- - - - - - - - - - - - - - - - - - - - - -  Facebook Scripts - - - - - - - - - - - - - - - - - - - -->
-     <script>
        
         var uid; //Id del usuario
 	    var accessToken; //token de acceso
 		var userProfile;	//perfil del usuario
 		var allFriends;		//Lista de amigos
+		
+		
+		var pages = [];
+		var interests = [];
 		
 	    window.fbAsyncInit = function() {
 			FB.init({
@@ -191,7 +194,6 @@
 				noResultsText: "Sin resultados",
 				searchingText: "Buscando...",
 				onAdd: function (item) {
-					//console.log(item.id);
 					$('.error').css('display','none');
 				},
 				resultsFormatter: function(item){ 
@@ -200,24 +202,43 @@
 			});	
 		}
 		
-		function likesFriend(element){
+		function pageFriend(element){
+			var control_repeat=0;
+			var tmp_id;
 			FB.api({
 					method: 'fql.query',
 					query: 'SELECT uid FROM page_fan WHERE page_id = '+element.id+' AND uid IN (SELECT uid2 FROM friend WHERE uid1=me())'
-				},function(result) {	
-					//allFriends=data;
-					console.log('Page Name: '+element.name);
+				},function(result) {
+					//Result regresa el id del amigo que tiene like en esa pagina	
+					//console.log('Page Name: '+element.name);
 					//console.log(result);
 					$.each(result, function(i, element_f){
-						console.log('usr_id::::'+element_f.uid);
-						$.each(allFriends, function(i, friend_element){
+						
+						$.each(allFriends, function(i_n, friend_element){
 							
+							//si ID del usuario que trae la pagina corresponde al ID de uno de mis amigos
 							if(friend_element.id == element_f.uid){
+								
+								if(control_repeat==0){
+									pages.push( {"page_id":element.id, "page_name": element.name});
+									tmp_id=element.id;
+									control_repeat=1;
+								}else if(tmp_id == element.id){
+									control_repeat=1;
+								}else{
+									control_repeat=0;
+								}
+								
+								
+								//console.log("page_id" + element.id);
+								
+								//console.log('usr_id::::'+element_f.uid+' Name: '+friend_element.name);
 								$("#key-friends").tokenInput("add", {"id":friend_element.id, "name": friend_element.name});
 								return false;
 							}
 						});
 					});
+
 				});		
 		}
 		
