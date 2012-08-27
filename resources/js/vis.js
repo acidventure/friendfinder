@@ -167,7 +167,7 @@ function createBox(data)
 		</div> \
 		<div id="pictureArea_'+id+'" class="pictureArea pictureArea-'+rank+'"> \
 			<a href="#"> \
-				<img height="'+((friend["rank"]*(maxHeight-minHeight))+minHeight)+'" id="pictureItem_'+id+'_0" src="'+pic+'" class="pictureItem pictureItem-'+rank+'" alt="'+name+'"> \
+				<img height="'+((friend["rank"]*(maxHeight-minHeight))+minHeight)+'" id="pictureItem_'+id+'_0" src="'+'https://graph.facebook.com/'+id+'/picture?width='+((friend["rank"]*(maxHeight-minHeight))+minHeight)+'&height='+((friend["rank"]*(maxHeight-minHeight))+minHeight)+'" class="pictureItem pictureItem-'+rank+'" alt="'+name+'"> \
 			</a> \
 		</div> \
 		<div id="personArea_'+id+'" class="personArea personArea-'+rank+'"> \
@@ -178,7 +178,7 @@ function createBox(data)
 		element += '\
 			<div id="personItem_'+id+'_'+i+'" class="personItem personItem-'+rank+'" > \
 				<a href="#"> \
-					<img width="30" height="30" id="personItemImg_'+id+'_'+i+'" src="'+person["user_picture"]+'" alt="'+person["user_name"]+'" class="personItemImg personItemImg-'+rank+'"> \
+					<img width="30" height="30" id="personItemImg_'+id+'_'+i+'" src="'+'https://graph.facebook.com/'+person["user_id"]+'/picture?width=30&height=30" src="'+person["user_picture"]+'" alt="'+person["user_name"]+'" class="personItemImg personItemImg-'+rank+'"> \
 				</a> \
 			</div> \
 		';
