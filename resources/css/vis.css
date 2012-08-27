@@ -1,0 +1,402 @@
+.principal {
+	width:1024;
+	height:768;
+	min-width: 1024;
+	min-width: 768;
+	max-width: 1024;
+	max-width: 768;
+	overflow:scroll;
+}
+
+.container {
+	width:180;
+	height:180;
+	background-color:#eeeeee;
+}
+
+.optionsArea {
+	width:180;
+	height:30;
+}
+
+.optionsItem {
+	float:right;
+	height:30;
+}
+
+.interestArea {
+	width:180;
+	height:30;
+}
+
+.interestItem {
+	width:30;
+	height:30;
+	display:inline;
+	position:relative;
+}
+
+.interestItemImg {
+	width:30;
+	height:30;
+	display:inline;
+	position:relative;
+}
+
+.pictureArea {
+	width:180;
+	height:90;
+}
+
+.pictureItem {
+	height:90;
+	display:block;
+	position:relative;
+}
+
+.personArea {
+	width:180;
+	height:30;
+}
+
+.personItem {
+	width:30;
+	height:30;
+}
+
+.personItemImg {
+	width:30;
+	height:30;
+	display:inline;
+	position:relative;
+}
+
+.container-1 {
+}
+
+.container-2 {
+}
+
+.container-3 {
+}
+
+.container-4 {
+}
+
+.container-5 {
+}
+
+.container-6 {
+}
+
+.container-7 {
+}
+
+.container-8 {
+}
+
+.container-9 {
+}
+
+.container-10 {
+}
+
+.optionsArea-1 {
+}
+
+.optionsArea-2 {
+}
+
+.optionsArea-3 {
+}
+
+.optionsArea-4 {
+}
+
+.optionsArea-5 {
+}
+
+.optionsArea-6 {
+}
+
+.optionsArea-7 {
+}
+
+.optionsArea-8 {
+}
+
+.optionsArea-9 {
+}
+
+.optionsArea-10 {
+}
+
+.optionsItem-1 {
+}
+
+.optionsItem-2 {
+}
+
+.optionsItem-3 {
+}
+
+.optionsItem-4 {
+}
+
+.optionsItem-5 {
+}
+
+.optionsItem-6 {
+}
+
+.optionsItem-7 {
+}
+
+.optionsItem-8 {
+}
+
+.optionsItem-9 {
+}
+
+.optionsItem-10 {
+}
+
+.interestArea-1 {
+}
+
+.interestArea-2 {
+}
+
+.interestArea-3 {
+}
+
+.interestArea-4 {
+}
+
+.interestArea-5 {
+}
+
+.interestArea-6 {
+}
+
+.interestArea-7 {
+}
+
+.interestArea-8 {
+}
+
+.interestArea-9 {
+}
+
+.interestArea-10 {
+}
+
+.interestItem-1 {
+}
+
+.interestItem-2 {
+}
+
+.interestItem-3 {
+}
+
+.interestItem-4 {
+}
+
+.interestItem-5 {
+}
+
+.interestItem-6 {
+}
+
+.interestItem-7 {
+}
+
+.interestItem-8 {
+}
+
+.interestItem-9 {
+}
+
+.interestItem-10 {
+}
+
+.interestItemImg-1 {
+}
+
+.interestItemImg-2 {
+}
+
+.interestItemImg-3 {
+}
+
+.interestItemImg-4 {
+}
+
+.interestItemImg-5 {
+}
+
+.interestItemImg-6 {
+}
+
+.interestItemImg-7 {
+}
+
+.interestItemImg-8 {
+}
+
+.interestItemImg-9 {
+}
+
+.interestItemImg-10 {
+}
+
+.pictureArea-1 {
+}
+
+.pictureArea-2 {
+}
+
+.pictureArea-3 {
+}
+
+.pictureArea-4 {
+}
+
+.pictureArea-5 {
+}
+
+.pictureArea-6 {
+}
+
+.pictureArea-7 {
+}
+
+.pictureArea-8 {
+}
+
+.pictureArea-9 {
+}
+
+.pictureArea-10 {
+}
+
+.pictureItem-1 {
+}
+
+.pictureItem-2 {
+}
+
+.pictureItem-3 {
+}
+
+.pictureItem-4 {
+}
+
+.pictureItem-5 {
+}
+
+.pictureItem-6 {
+}
+
+.pictureItem-7 {
+}
+
+.pictureItem-8 {
+}
+
+.pictureItem-9 {
+}
+
+.pictureItem-10 {
+}
+
+.personArea-1 {
+}
+
+.personArea-2 {
+}
+
+.personArea-3 {
+}
+
+.personArea-4 {
+}
+
+.personArea-5 {
+}
+
+.personArea-6 {
+}
+
+.personArea-7 {
+}
+
+.personArea-8 {
+}
+
+.personArea-9 {
+}
+
+.personArea-10 {
+}
+
+.personItem-1 {
+}
+
+.personItem-2 {
+}
+
+.personItem-3 {
+}
+
+.personItem-4 {
+}
+
+.personItem-5 {
+}
+
+.personItem-6 {
+}
+
+.personItem-7 {
+}
+
+.personItem-8 {
+}
+
+.personItem-9 {
+}
+
+.personItem-10 {
+}
+
+.personItemImg-1 {
+}
+
+.personItemImg-2 {
+}
+
+.personItemImg-3 {
+}
+
+.personItemImg-4 {
+}
+
+.personItemImg-5 {
+}
+
+.personItemImg-6 {
+}
+
+.personItemImg-7 {
+}
+
+.personItemImg-8 {
+}
+
+.personItemImg-9 {
+}
+
+.personItemImg-10 {
+}
