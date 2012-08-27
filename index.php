@@ -79,7 +79,6 @@
 					$.each(response.data, function(i, element){
 						//console.log('nombre:' + element.name + ' - ID: '+element.id);
 						pageFriend(element);
-						
 					});
 					//pages_tmp = pages;
 					interests.push({"text":tag, "color": '#003366', "pages_array": pages})
