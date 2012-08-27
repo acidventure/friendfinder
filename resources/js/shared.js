@@ -1,19 +1,31 @@
+var INTEREST_SORT = 0;
+var FRIENDS_SORT = 1;
+var visSortBy = INTEREST_SORT;
 var newPage = {
-	"page_id" = "",
+	"page_id" : "",
+	"page_name" : ""
 };
 var newInterest = {
 	"text" : "",
-	"pages_array" : []
+	"pages_array" : [],
+	"color" : "#eeeeee"
 };
 var newPerson = {
 	"user_id" : "",
-	"image" : "",
+	"user_name" : "",
+	"user_picture" : "",
 	"interest_array" : []
 };
 var newFriend = {
 	"user_id" : "",
-	"person_array" : []
+	"user_name" : "",
+	"user_picture" : "",
+	"person_array" : [],
+	"interest_array" : [],
+	"interest_count" : 0,
+	"person_count" : 0,
+	"rank" : 0
 };
 var visInput = {
-	"friend_array" = []
+	"friend_array" : []
 };
