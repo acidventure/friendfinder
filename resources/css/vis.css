@@ -6,12 +6,14 @@
 	max-width: 1024;
 	max-width: 768;
 	overflow:scroll;
+	display:block;
 }
 
 .container {
 	width:180;
 	height:180;
 	background-color:#eeeeee;
+	display:inline;
 }
 
 .optionsArea {
@@ -27,6 +29,8 @@
 .interestArea {
 	width:180;
 	height:30;
+	display:inline;
+	position:relative;
 }
 
 .interestItem {
@@ -46,29 +50,36 @@
 .pictureArea {
 	width:180;
 	height:90;
+	display:block;
+	position:relative;
 }
 
 .pictureItem {
-	height:90;
-	display:block;
+	max-height:90;
+	max-width:90;
+	display:inline-block;
 	position:relative;
 }
 
 .personArea {
 	width:180;
 	height:30;
+
+	
 }
 
 .personItem {
-	width:30;
-	height:30;
-}
-
-.personItemImg {
+	position:relative;
 	width:30;
 	height:30;
 	display:inline;
+}
+
+.personItemImg {
 	position:relative;
+	width:30;
+	height:30;
+	display:inline;
 }
 
 .container-1 {

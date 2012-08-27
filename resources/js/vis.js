@@ -28,31 +28,31 @@ var interest3 = {
 var person1 = {
 	"user_id" : "001",
 	"user_name" : "Maria",
-	"user_picture" : "http://2.bp.blogspot.com/_2Wu8I8m7mt4/SjQQTUSKDSI/AAAAAAAAB5o/RQGiQmah88w/s400/Las%2BMujeres%2BBellas%2Batontan%2Ba%2Blos%2BHombres.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"interest_array" : [ interest2 ]
 };
 var person2 = {
 	"user_id" : "002",
 	"user_name" : "Luisa",
-	"user_picture" : "http://3.bp.blogspot.com/_EZ16vWYvHHg/S8i6giSWMJI/AAAAAAAAKcY/Jx68RoB4fi4/s1600/Mujeres-Hermosas.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"interest_array" : [ interest1, interest2, interest3 ]
 };
 var person3 = {
 	"user_id" : "003",
 	"user_name" : "America",
-	"user_picture" : "http://sinfoniafantastica.files.wordpress.com/2007/06/hermosa.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"interest_array" : [ interest1, interest2 ]
 };
 var person4 = {
 	"user_id" : "004",
 	"user_name" : "Ruby",
-	"user_picture" : "http://t1.gstatic.com/images?q=tbn:ANd9GcQBcn_Iga1hftUgvIULB90uYfS0jTEd4wWvHvk3QDha8byhly_9jQ&t=1",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"interest_array" : [ interest3 ]
 };
 var friend1 = {
 	"user_id" : "201",
 	"user_name" : "Magdalena",
-	"user_picture" : "http://seduccionpeligrosav.com/wp-content/uploads/2011/12/tips-para-ligar-mujeres-hermosas.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person1 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -62,7 +62,7 @@ var friend1 = {
 var friend2 = {
 	"user_id" : "202",
 	"user_name" : "Clodomira",
-	"user_picture" : "http://globedia.com/imagenes/noticias/2012/2/29/jovencita-oriental-dice-haber-logrado-convertirse-barbie-version-humana_6_1114612.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person2 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -72,7 +72,7 @@ var friend2 = {
 var friend3 = {
 	"user_id" : "203",
 	"user_name" : "Panfila",
-	"user_picture" : "http://4.bp.blogspot.com/-LqSNS4PE264/UBGKmx0Jw1I/AAAAAAAACf8/WK5M_6B7Kws/s1600/bab.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person3 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -82,7 +82,7 @@ var friend3 = {
 var friend4 = {
 	"user_id" : "204",
 	"user_name" : "Tomasa",
-	"user_picture" : "http://www.garuyo.com/uploads/2012/3/mujeres-hermosas-del-mundo_114611.jpg_20444.670x503.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person1, person2, person3 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -92,7 +92,7 @@ var friend4 = {
 var friend5 = {
 	"user_id" : "205",
 	"user_name" : "Loquenda",
-	"user_picture" : "http://sinfoniafantastica.files.wordpress.com/2008/09/dani.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person1, person3 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -102,7 +102,7 @@ var friend5 = {
 var friend6 = {
 	"user_id" : "206",
 	"user_name" : "Penelope",
-	"user_picture" : "http://2.bp.blogspot.com/_J0NDYdehCds/TG7w5oQHT7I/AAAAAAAAQaY/4l3iYmpj7Zs/s400/chicas%2Bhermosas.jpg",
+	"user_picture" : "http://www.boomer-ezine.com/images/Mexico-Map.jpg",
 	"person_array" : [ person1, person2, person3, person4 ],
 	"interest_array" : [],
 	"interest_count" : 0,
@@ -124,7 +124,7 @@ function loadFriends(data)
 		friends = sortFriends(friends);
 		for(var i in friends)
 		{
-			var box = createBox({friend:friends[i],hidden:true});
+			var box = createBox({friend:friends[i],hidden:false});
 			$("#divFriends").append(box);
 		}
 		$(".container").first().show("fast", function showNext() {
@@ -144,7 +144,7 @@ function createBox(data)
 	<div style="'+(typeof data["hidden"] == 'undefined'?'':data["hidden"]?'display:none':'')+'" id="container_'+id+'" class="container container-'+rank+'"> \
 		<div id="optionsArea_'+id+'" class="optionsArea optionsArea-'+rank+'"> \
 			<a href="javascript:addFriend('+id+');"> \
-				<img id="optionsItem_'+id+'_0" src="./resources/images/addFriend.png" class="optionsItem optionsItem-'+rank+'"> \
+				<img width="30" height="30" id="optionsItem_'+id+'_0" src="./resources/images/addFriend.png" class="optionsItem optionsItem-'+rank+'"> \
 			</a> \
 		</div> \
 		<div id="interestArea_'+id+'" class="interestArea interestArea-'+rank+'"> \
@@ -155,7 +155,7 @@ function createBox(data)
 		element += '\
 			<div id="interestItem_'+id+'_'+i+'" class="interestItem interestItem-'+rank+'" style="background-color:'+interest['color']+'"> \
 				<a href="#"> \
-					<img id="interestItemImg_'+id+'_'+i+'" src="./resources/images/transparent.png" alt="'+interest['text']+'" class="interestItemImg interestItemImg-'+rank+'"> \
+					<img width="30" height="30" id="interestItemImg_'+id+'_'+i+'" src="./resources/images/transparent.png" alt="'+interest['text']+'" class="interestItemImg interestItemImg-'+rank+'"> \
 				</a> \
 			</div> \
 		';
@@ -164,7 +164,7 @@ function createBox(data)
 		</div> \
 		<div id="pictureArea_'+id+'" class="pictureArea pictureArea-'+rank+'"> \
 			<a href="#"> \
-				<img id="pictureItem_'+id+'_0" src="'+pic+'" class="pictureItem pictureItem-'+rank+'" alt="'+name+'"> \
+				<img height="'+((friend["rank"]*(maxHeight-minHeight))+minHeight)+'" id="pictureItem_'+id+'_0" src="'+pic+'" class="pictureItem pictureItem-'+rank+'" alt="'+name+'"> \
 			</a> \
 		</div> \
 		<div id="personArea_'+id+'" class="personArea personArea-'+rank+'"> \
@@ -175,7 +175,7 @@ function createBox(data)
 		element += '\
 			<div id="personItem_'+id+'_'+i+'" class="personItem personItem-'+rank+'" > \
 				<a href="#"> \
-					<img id="personItemImg_'+id+'_'+i+'" src="'+person["user_picture"]+'" alt="'+person["user_name"]+'" class="personItemImg personItemImg-'+rank+'"> \
+					<img width="30" height="30" id="personItemImg_'+id+'_'+i+'" src="'+person["user_picture"]+'" alt="'+person["user_name"]+'" class="personItemImg personItemImg-'+rank+'"> \
 				</a> \
 			</div> \
 		';

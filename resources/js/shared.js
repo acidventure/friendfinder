@@ -1,3 +1,7 @@
+var minWidth = 60;
+var maxWidth = 180;
+var minHeight = 60;
+var maxHeight = 180;
 var INTEREST_SORT = 0;
 var FRIENDS_SORT = 1;
 var visSortBy = INTEREST_SORT;
