@@ -11,7 +11,7 @@
 		
 		<script type="text/javascript" src="./resources/js/vis.js"></script>
 		<input value="Order by Interest" type="button" onclick="visSortBy = INTEREST_SORT;loadFriends(inputData)">
-		<input value="Order by Contacts" type="button" onclick="visSortBy = FRIENDS_SORT;loadFriends(inputData)">
+		<input value="Order by Pages" type="button" onclick="visSortBy = FRIENDS_SORT;loadFriends(inputData)">
 		<div id="divFriends" class="principal"></div>
 	</body>
 </html>

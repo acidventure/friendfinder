@@ -4,6 +4,7 @@ var minHeight = 60;
 var maxHeight = 180;
 var INTEREST_SORT = 0;
 var FRIENDS_SORT = 1;
+var PAGES_SORT = 2;
 var visSortBy = INTEREST_SORT;
 var newPage = {
 	"page_id" : "",
